@@ -4,9 +4,9 @@
 if [ -f /etc/redhat-release ]; then
     if [ -f /etc/os-release ]; then
         . /etc/os-release
-	    os_version="${NAME} ${VERSION}"
+        os_version="${NAME} ${VERSION}"
     else
-	    os_version=$(cat /etc/redhat-release)
+        os_version=$(cat /etc/redhat-release)
     fi
 
     # get number of updates
@@ -16,10 +16,10 @@ if [ -f /etc/redhat-release ]; then
 # debian
 elif [ -f /etc/debian_version ]; then
     if [ -f /etc/os-release ]; then
-	    . /etc/os-release
-	    os_version="${PRETTY_NAME}"
+        . /etc/os-release
+        os_version="${PRETTY_NAME}"
     else
-	    os_version=$(cat /etc/debian_version)
+        os_version=$(cat /etc/debian_version)
     fi
 
     # get number of updates
