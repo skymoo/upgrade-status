@@ -10,7 +10,7 @@ if [ -f /etc/redhat-release ]; then
     fi
 
     # get number of updates
-    sudo dnf -qy makecache || echo "unable to update dnf repositories"
+    sudo dnf -qy makecache || echo "Error: Unable to update dnf repositories"
     updates=$(sudo dnf updateinfo list -q | awk -F " " '{print $NF}' | wc -l)
 
 # debian
@@ -23,12 +23,12 @@ elif [ -f /etc/debian_version ]; then
     fi
 
     # get number of updates
-    sudo apt-get -qq update || echo "unable to update apt repositories"
+    sudo apt-get -qq update || echo "Error: Unable to update apt repositories"
     updates=$(sudo apt-get -qq -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | grep ^Inst | wc -l)
 
 # unknown os
 else
-    echo "Error: not able to determine flavor of Linux."
+    echo "Error: Not able to determine flavour of Linux."
     exit 1
 fi
 
